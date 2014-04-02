@@ -39,7 +39,7 @@ foreach ($vm in $vms)
 $vmguest = $vm.name
 $vmguestIP = get-vmguest $vmguest
 $vmIP = $vmguestIP.IPaddress
-.\psexec \\$vmIP -u administrator -p $plocalPW netdom join  $vmguest /domain:corbis.com /userd:$userName /passwordd:$puserPW
+.\psexec \\$vmIP -u administrator -p $plocalPW netdom join  $vmguest /domain:domain.com /userd:$userName /passwordd:$puserPW
 .\psexec \\$vmIP -u administrator -p $plocalPW shutdown -r -t 0
 }
 $vms = Import-CSV D:\PSScripts\vmware\deploy.csv$localPW = read-host  -AsSecureString “Please enter the local admin password”$userName = read-host “Please type a username that can add machines to the domain”$userPW = read-host -AsSecureString “Please enter your password”$pLocalPW = [system.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.runtime.InteropServices.Marshal]::SecureStringToBSTR($localPW))$pUserPW = [system.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.runtime.InteropServices.Marshal]::SecureStringToBSTR($userPW))$Tasks = @()
